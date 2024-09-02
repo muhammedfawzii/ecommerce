@@ -10,13 +10,13 @@
        @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
         <div class="w-50 alert alert-danger">
             @if (registerForm.get('name')?.getError('required')) {
-                <p class="m-0">name Is required</p>
+                <p class="m-0 changeFs">name Is required</p>
             }
             @else if (registerForm.get('name')?.getError('minlength')) {
-                <p class="m-0">name should be more than or equal 3 chars</p>
+                <p class="m-0 changeFs">name should be more than or equal 3 chars</p>
             }
             @else if (registerForm.get('name')?.getError('maxlength')) {
-                <p class="m-0">name should be less than or equal 20 chars</p>
+                <p class="m-0 changeFs">name should be less than or equal 20 chars</p>
             }
         </div>
        }
@@ -30,10 +30,10 @@
         @if (registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty)) {
             <div class="w-50 alert alert-danger">
                 @if (registerForm.get('email')?.getError('required')) {
-                    <p class="m-0">email is required</p>
+                    <p class="m-0 changeFs">email is required</p>
                 }
                 @else if (registerForm.get('email')?.getError('email')) {
-                    <p class="m-0">invalid email</p>
+                    <p class="m-0 changeFs">invalid email</p>
                 }
             </div>
         }
@@ -47,10 +47,10 @@
         @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)) {
             <div class="w-50 alert alert-danger">
                 @if (registerForm.get('phone')?.getError('required')) {
-                    <p class="m-0">phone is required</p>
+                    <p class="m-0 changeFs">phone is required</p>
                 }
                 @else if (registerForm.get('phone')?.getError('pattern')) {
-                    <p class="m-0">enter egyptian number</p>
+                    <p class="m-0 changeFs">enter egyptian number</p>
                 }
             </div>
         }
@@ -71,10 +71,10 @@
         @if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)) {
             <div class="w-50 alert alert-danger">
                 @if (registerForm.get('password')?.getError('required')) {
-                    <p class="m-0">password is required</p>
+                    <p class="m-0 changeFs">password is required</p>
                 }
                 @else if (registerForm.get('password')?.getError('pattern')) {
-                    <p class="m-0">invalid password</p>
+                    <p class="m-0 changeFs">invalid password</p>
                 }
             </div>
         }
@@ -94,7 +94,7 @@
            
         </div>
         @if (registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)) {
-            <p class="m-0 alert alert-danger w-50">wrong confirmation</p>
+            <p class="m-0 alert alert-danger w-50 changeFs">wrong confirmation</p>
         }
     </div>
     <button type="submit" class="btn-main ms-auto d-block">
@@ -104,7 +104,7 @@
         }
     </button>
 @if (msgError) {
-   <p class="w-50 alert alert-danger">{{msgError}}</p>
+   <p class="w-50 alert alert-danger changeFs">{{msgError}}</p>
 }
 
 @if (msgSuccess) {

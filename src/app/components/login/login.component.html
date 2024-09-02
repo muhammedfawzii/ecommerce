@@ -11,10 +11,10 @@
        @if (loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)) {
         <div class="w-50 alert alert-danger">
             @if (loginForm.get('email')?.getError('required')) {
-                <p class="m-0">email is required</p>
+                <p class="m-0 changeFs">email is required</p>
             }
             @else if (loginForm.get('email')?.getError('email')) {
-                <p class="m-0">invalid email</p>
+                <p class="m-0 changeFs">invalid email</p>
             }
         </div>
        }
@@ -37,10 +37,10 @@
         @if (loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)) {
             <div class="w-50 alert alert-danger">
                 @if (loginForm.get('password')?.getError('required')) {
-                    <p class="m-0">password is required</p>
+                    <p class="m-0 changeFs">password is required</p>
                 }
                 @else if (loginForm.get('password')?.getError('pattern')) {
-                    <p class="m-0">invalid password</p>
+                    <p class="m-0 changeFs">invalid password</p>
                 }
             </div>
            }
@@ -56,7 +56,7 @@
    </div>
 
     @if (msgError) {
-        <p class="w-50 alert alert-danger">{{msgError}}</p>
+        <p class="w-50 alert alert-danger changeFs">{{msgError}}</p>
     }
     @if (msgSuccess) {
         <p class="text-main">Success <i class="fa-solid fa-thumbs-up text-main"></i></p>
