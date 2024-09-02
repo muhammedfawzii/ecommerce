@@ -12,7 +12,7 @@
                     <img [src]="product.imageCover" class="w-100" [alt]="product.title">
                 <h3 class="small text-main">{{product.category.name}}</h3>
                 <h4 class="h6">{{product.title|textterm:2}}</h4>
-                <div class="d-flex justify-content-between align-items-center">
+                <div class="d-block">
                     <span>{{product.price|currency:'GBP'}}</span>
                     <div>
                         @for (num of [1, 2, 3, 4, 5].slice(0, product.ratingsAverage); track $index) {
