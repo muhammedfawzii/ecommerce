@@ -26,7 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideToastr(),
     importProvidersFrom(NgxSpinnerModule , 
       TranslateModule.forRoot({
-        defaultLanguage:"ar",
+        defaultLanguage:"en",
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
