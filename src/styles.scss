@@ -110,3 +110,8 @@ a:hover {
   display: flex;
   align-items: center;
 }
+@media (max-width:768px) {
+  .changeFs{
+    width: 100%;
+  }
+}
