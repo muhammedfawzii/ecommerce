@@ -1,0 +1,78 @@
+<nav #scroll class="navbar navbar-expand-lg  rounded-5 bg-black sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="home">
+        <img src="./assets/images/freshcart-logo.svg" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav">
+          
+          <li class="nav-item">
+            <a  class="nav-link" routerLinkActive="active-link" routerLink="home">{{"navbar.home" | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLinkActive="active-link" routerLink="product">{{"navbar.products" | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLinkActive="active-link" routerLink="brands">{{"navbar.brands" | translate}}</a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link" routerLinkActive="active-link" routerLink="categories">{{"navbar.categories" | translate}}</a>
+          </li>
+          
+         
+          
+        </ul>
+        <ul class="navbar-nav">
+          
+          <li class="nav-item dropdown text-dark">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{"navbar.lang" | translate}}
+            </a>
+            <ul class="dropdown-menu">
+              <li [class.bg-info]="_TranslateService.currentLang === 'en'" (click)="change('en')"><a id="colorChange" class="dropdown-item cr">EN</a></li>
+              <li [class.bg-info]="_TranslateService.currentLang === 'ar'" (click)="change('ar')"><a id="changeColor" class="dropdown-item cr">AR</a></li>            
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link position-relative" routerLinkActive="active-link" routerLink="cart">
+              <i class="fa-solid fa-cart-plus fa-2xl"></i>
+              <span class="badge position-absolute top-0 start-0 bg-info">{{cartNum()}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="wishlist">
+              <i appHeartclick  class="fa-solid fa-heart fa-xl"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.facebook.com" target="_blank" class="nav-link">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.instagram.com" target="_blank" class="nav-link">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.twitter.com" target="_blank" class="nav-link">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.linkedin.com" target="_blank" class="nav-link">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link cr" (click)="_AuthService.logOut()">
+                {{"navbar.signout" | translate}}
+            </a>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>

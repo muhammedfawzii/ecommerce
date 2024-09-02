@@ -1,0 +1,31 @@
+{
+    "navbar":{
+        "home":"الرئيسية",
+        "products":"المنتجات",
+        "categories":"الأقسام",
+        "brands":"العلامات التجارية",
+        "lang":"ع",
+        "signout": "تسجيل خروج"
+    },
+   "home":{
+    "popular categories":"اشهر الأقسام",
+        "books":"كتب",
+        "home":"ادوات منزلية",
+        "baby & toys":"طفل و ألعاب",
+        "supermarket":"سوبر ماركت",
+        "women's fashion":"أزياء المرأة",
+        "men's fashion":"ازياء الرجال",
+        "music":"موسيقي",
+        "mobiles":"هاتف محمول",
+        "beauty & health":"صحة و جمال",
+        "electronics":"اجهزة كهربائية",
+        "woman shawl":"شال نسائي",
+        "woman bordeaux":"شال نسائي",
+        "woman brown":"شال نسائي",
+        "woman standart":"شال نسائي",
+        "relaxed fit":"نسائي شال",
+        "woman socks": "جوارب نسائية",
+        "woman karma":"شال نسائي",
+        "logo t-shirt":"تيشيرتات"
+    }
+}

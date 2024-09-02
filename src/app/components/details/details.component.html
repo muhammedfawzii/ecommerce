@@ -1,0 +1,93 @@
+
+@if (detailsBrands) {
+    <section class="my-2">
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <img [src]="detailsBrands.image" class="w-100" [alt]="detailsBrands.name">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div>
+                    <h3 class="h5 text-main">{{detailsBrands.name}}</h3>
+                    <p>{{detailsBrands.slug}}</p>
+                    <div>
+                        @for (num of [1, 2, 3, 4, 5]; track $index) {
+                            <span><i class="fas fa-star rating-color"></i></span>
+                        }
+                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
+                        <span>4.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </section>
+}
+
+@if (detailsCateg) {
+    <section class="my-2">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div>
+                    <img [src]="detailsCateg.image" class="w-100" [alt]="detailsCateg.name">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h3>{{detailsCateg.name}}</h3>
+                <p class="text-muted">{{detailsCateg.slug}}</p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>139 EGP</span>
+                    <div>
+                        @for (num of [1, 2, 3, 4, 5]; track $index) {
+                            <span><i class="fas fa-star rating-color"></i></span>
+                        }
+                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
+                        <span>4.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@if (detailsProducts) {
+    <section class="my-2">
+        <div class="row align-items-center">
+            <div class="col-md-3">
+
+                <owl-carousel-o [options]="customOptionsDetailsProduct">
+
+                    @for (item of detailsProducts.images; track $index) {
+                        
+                            <ng-template carouselSlide>
+                                <img [src]="detailsProducts.images[$index]" class="w-100 rounded-4" [alt]="detailsProducts.title">
+
+                            </ng-template>
+                          
+                    }
+                
+                  </owl-carousel-o>
+                
+            </div>
+            <div class="col-md-9">
+                <h3>{{detailsProducts.title}}</h3>
+                <p class="text-muted">{{detailsProducts.description}}</p>
+                <h4 class="h6 text-main">{{detailsProducts.category.name}}</h4>
+                <div class="d-flex align-items-center justify-content-between">
+                    <span>{{detailsProducts.price}} EGP</span>
+                    <div>
+                        @for (num of [1, 2, 3, 4, 5].slice(0, detailsProducts.ratingsAverage); track $index) {
+                            <span><i class="fas fa-star rating-color"></i></span>
+                        }
+                        @if (detailsProducts.ratingsAverage % 1 !== 0) {
+                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
+                        }
+                        <span>{{detailsProducts.ratingsAverage}}</span>
+                    </div>
+                </div>
+                <button (click)="addToCart(detailsProducts._id)" class="btn-main w-100">Add To Cart</button>
+            </div>
+        </div>
+    </section>
+}

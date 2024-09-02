@@ -1,0 +1,31 @@
+{
+    "navbar":{
+        "home":"Home",
+        "products":"Products",
+        "categories":"Categories",
+        "brands":"Brands",
+        "lang":"Lang",
+        "signout": "Signout"
+    },
+    "home":{
+        "popular categories":"Popular Categories",
+        "books":"Books",
+        "home":"Home",
+        "baby & toys":"Baby & Toys",
+        "supermarket":"Supermarket",
+        "women's fashion":"Women's Fashion",
+        "men's fashion":"Men's Fashion",
+        "music":"Music",
+        "mobiles":"Mobiles",
+        "beauty & health":"Beauty & Health",
+        "electronics":"Electronics",
+        "woman shawl":"Woman shawl",
+        "woman bordeaux":"Woman Bordeaux",
+        "woman brown":"Woman Brown",
+        "woman standart":"Women Standart",
+        "relaxed fit":"Relaxed Fit",
+        "woman socks": "Woman Socks",
+        "woman karma":"Woman Karma",
+        "logo t-shirt":"Logo T-shirt"
+    }
+}

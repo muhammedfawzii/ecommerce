@@ -1,0 +1,18 @@
+@media (max-width:700px) {
+    .col-md-2{
+        width: 50%;
+    }
+}
+@media (min-width:701px) and (max-width:991px) {
+    .col-md-2{
+        
+        width: 25%;
+    }
+}
+#heart{
+    transform: translateX(120%);
+    transition: 0.8s;
+}
+#parent:hover #heart{
+transform: translateX(0);
+}

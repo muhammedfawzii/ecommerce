@@ -1,0 +1,84 @@
+<!-- main -->
+
+<section class="my-2">
+<div class="row g-0">
+    <div class="col-md-10">
+        
+        <owl-carousel-o [options]="customOptionsMain">
+            <ng-template carouselSlide><img src="./assets/images/2117e5a7-dbaa-496d-82b7-85bfc55f67d0.avif" height="300px" class="w-100" alt=""></ng-template> 
+            <ng-template carouselSlide><img src="./assets/images/en_dk_eg-hero-01-hp.1723789482.524587.avif" height="300px" class="w-100" alt=""></ng-template> 
+            <ng-template carouselSlide><img src="./assets/images/c02f32b7-c3e6-40fa-92dc-72ef825acd9e.avif" height="300px" class="w-100" alt=""></ng-template> 
+            <ng-template carouselSlide><img src="./assets/images/slider-image-3.jpeg" height="300px" class="w-100" alt=""></ng-template> 
+            <ng-template carouselSlide><img src="./assets/images/en_dk_eg-hero-01-hp.1723970581.1565328.avif" height="300px" class="w-100" alt=""></ng-template> 
+            
+          </owl-carousel-o>
+        
+    </div>
+    <div class="col-md-2">
+        <div>
+            <img src="./assets/images/slider-image-1.jpeg" height="150px" class="w-100" alt="">
+            <img src="./assets/images/slider-image-2.jpeg" height="150px" class="w-100" alt="">
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- categories -->
+<section class="my-2">
+    <h2 class="text-main"> {{"home.popular categories" | translate}}</h2>
+    <owl-carousel-o [options]="customOptionsCateg">
+
+        @for (categ of categoryList(); track categ._id) {
+            
+                
+                    <ng-template carouselSlide>
+                        <div [routerLink]="['/details', categ._id]" class="cr">
+                        <img [src]="categ.image" height="250px" class="w-100" [alt]="categ.name">
+                        <h3 class="h6 text-main my-2">{{ categ.name | translate}}</h3>
+                        </div>
+                      </ng-template>
+                
+              
+        }
+    
+      </owl-carousel-o>
+</section>
+
+<!-- products -->
+
+<section>
+    <h2>Popular Products:</h2>
+    <input [(ngModel)]="data" type="search" class="w-50 form-control my-3 mx-auto" placeholder="search by name...">
+    <div class="row g-3">
+       @for (product of productList().slice(0 , 12) |search:data(); track product.id) {
+        <div id="parent" class="col-sm-6 col-md-2">
+            <div class="product py-2">
+                <div id="heart" class="my-2 p-2">
+                    <i appHeartclick  (click)="addToWishList(product.id)" class="fa-solid fa-heart cr fa-xl"></i>
+                </div>
+                <div [routerLink]="['/details', product._id]" class="cr">
+                    <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                <h3 class="small text-main">{{product.category.name}}</h3>
+                <h4 class="h6">{{product.title|textterm:2}}</h4>
+                <div class="d-block">
+                    <span>{{product.price|currency:'GBP'}}</span>
+                    <div>
+                        @for (num of [1, 2, 3, 4, 5].slice(0, product.ratingsAverage); track $index) {
+                            <span><i class="fas fa-star rating-color"></i></span>
+                        }
+                        @if (product.ratingsAverage % 1 !== 0) {
+                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
+                        }
+                        <span>{{product.ratingsAverage}}</span>
+                    </div>
+                    
+                </div>
+                
+                </div>
+                
+                <button class="btn-main w-100" (click)="addToCart(product.id)">Add To Cart</button>
+            </div>
+        </div>
+       }
+    </div>
+</section>

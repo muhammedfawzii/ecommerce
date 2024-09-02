@@ -1,0 +1,115 @@
+<section class="bg-main-light py-2 my-2 shadow rounded-4">
+<h1 class="h2 text-main">Register Now:</h1>
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmit()">
+    <div class="my-2">
+        <label for="name">name</label>
+        <input [ngClass]="{
+            'is-valid':!registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty),
+            'is-invalid':registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)
+        }" formControlName="name" type="text" class="form-control" id="name">
+       @if (registerForm.get('name')?.errors && (registerForm.get('name')?.touched || registerForm.get('name')?.dirty)) {
+        <div class="w-50 alert alert-danger">
+            @if (registerForm.get('name')?.getError('required')) {
+                <p class="m-0">name Is required</p>
+            }
+            @else if (registerForm.get('name')?.getError('minlength')) {
+                <p class="m-0">name should be more than or equal 3 chars</p>
+            }
+            @else if (registerForm.get('name')?.getError('maxlength')) {
+                <p class="m-0">name should be less than or equal 20 chars</p>
+            }
+        </div>
+       }
+    </div>
+    <div class="my-2">
+        <label for="email">email</label>
+        <input [ngClass]="{
+            'is-valid':!registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty),
+            'is-invalid':registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty)
+        }" formControlName="email" type="email" class="form-control" id="email">
+        @if (registerForm.get('email')?.errors && (registerForm.get('email')?.touched ||registerForm.get('email')?.dirty)) {
+            <div class="w-50 alert alert-danger">
+                @if (registerForm.get('email')?.getError('required')) {
+                    <p class="m-0">email is required</p>
+                }
+                @else if (registerForm.get('email')?.getError('email')) {
+                    <p class="m-0">invalid email</p>
+                }
+            </div>
+        }
+    </div>
+    <div class="my-2">
+        <label for="phone">phone</label>
+        <input [ngClass]="{
+            'is-valid':!registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty),
+            'is-invalid':registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)
+        }" formControlName="phone" type="tel" class="form-control" id="phone">
+        @if (registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || registerForm.get('phone')?.dirty)) {
+            <div class="w-50 alert alert-danger">
+                @if (registerForm.get('phone')?.getError('required')) {
+                    <p class="m-0">phone is required</p>
+                }
+                @else if (registerForm.get('phone')?.getError('pattern')) {
+                    <p class="m-0">enter egyptian number</p>
+                }
+            </div>
+        }
+    </div>
+    <div class="my-2">
+       <div class="position-relative">
+        <label for="password">password</label>
+        <input [ngClass]="{
+            'is-valid':!registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty),
+            'is-invalid':registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)
+        }" formControlName="password" type="password" class="form-control" id="password" [type]="inputType? 'text' : 'password'">
+        @if (registerForm.get('password')?.dirty) {
+            <button type="button" id="icon" class="btn" (click)="passwordVisibility()">
+                <i id="size" [class]="inputType? 'fa-solid fa-eye' : 'fa fa-eye-slash'"></i>
+            </button>
+        }
+       </div>
+        @if (registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.dirty)) {
+            <div class="w-50 alert alert-danger">
+                @if (registerForm.get('password')?.getError('required')) {
+                    <p class="m-0">password is required</p>
+                }
+                @else if (registerForm.get('password')?.getError('pattern')) {
+                    <p class="m-0">invalid password</p>
+                }
+            </div>
+        }
+    </div>
+    <div class="my-2">
+        <div class="position-relative">
+            <label for="rePassword">rePassword</label>
+        <input [ngClass]="{
+            'is-valid':!registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty),
+            'is-invalid':registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)
+        }" formControlName="rePassword" type="password" class="form-control" id="rePassword" [type]="inputType1? 'text' : 'password'">
+        @if (registerForm.get('rePassword')?.dirty) {
+            <button type="button" id="icon3" class="btn" (click)="passwordVisibility1()">
+                <i id="size" [class]="inputType1? 'fa-solid fa-eye' : 'fa fa-eye-slash'"></i>
+            </button>
+        }
+           
+        </div>
+        @if (registerForm.getError('mismatch') && (registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.dirty)) {
+            <p class="m-0 alert alert-danger w-50">wrong confirmation</p>
+        }
+    </div>
+    <button type="submit" class="btn-main ms-auto d-block">
+        Register
+        @if (isLoading) {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+    </button>
+@if (msgError) {
+   <p class="w-50 alert alert-danger">{{msgError}}</p>
+}
+
+@if (msgSuccess) {
+    <p class="text-main">Success <i class="fa-solid fa-thumbs-up text-main"></i></p>
+}
+
+</form>
+</section>

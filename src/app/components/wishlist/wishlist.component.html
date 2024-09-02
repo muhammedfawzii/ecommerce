@@ -1,0 +1,25 @@
+@if (userWishlist()) {
+<section class="bg-main-light shadow p-2 my-3  rounded-3 w-75 mx-auto">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1 class="h2 text-center">Your Wishlist</h1>
+  </div>
+  @for (item of userWishlist(); track item.id) {
+  <div class="row pb-2 border-bottom align-items-center">
+    <div class="col-md-1">
+      <div class="my-2">
+        <img [src]="item.imageCover" class="w-100" alt="" />
+      </div>
+    </div>
+    <div class="col-md-11">
+      <div>
+        <h4 class="h5 fw-bold">{{ item.category.name }}</h4>
+        <p>{{ item.price | currency : "GBP" }}</p>
+        <button (click)="removeProduct(item.id)" class="btn text-danger cr">
+          <i class="fa-solid fa-trash fa-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  }
+</section>
+}

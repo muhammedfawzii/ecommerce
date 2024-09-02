@@ -1,0 +1,50 @@
+<section class="bg-main-light shadow p-2 my-2 rounded-3 w-75 mx-auto">
+<form [formGroup]="orders" (ngSubmit)="ordersSubmit()">
+    <div class="my-2">
+        <label for="details">Details</label>
+        <textarea formControlName="details"  id="details" class="form-control"></textarea>
+        @if (orders.get('details')?.errors && (orders.get('details')?.touched || orders.get('details')?.dirty)) {
+            <div class="w-50 alert alert-danger">
+                @if (orders.get('details')?.getError('required')) {
+                    <p class="m-0">details is required</p>
+                }
+            </div>
+        }
+    </div>
+    <div class="my-2">
+        <label for="phone">phone</label>
+       <input formControlName="phone" type="tel"  id="phone" class="form-control">
+       @if (orders.get('phone')?.errors && (orders.get('phone')?.touched || orders.get('phone')?.dirty)) {
+        <div class="w-50 alert alert-danger">
+            @if (orders.get('phone')?.getError('required')) {
+                <p class="m-0">phone is required</p>
+            }
+            @else if (orders.get('phone')?.getError('pattern')) {
+                <p class="m-0">invalid phone number</p>
+            }
+        </div>
+    }
+    </div>
+    <div class="my-2">
+        <label for="city">city</label>
+        <input formControlName="city" type="text"  id="city" class="form-control">
+        @if (orders.get('city')?.errors && (orders.get('city')?.touched || orders.get('city')?.dirty)) {
+            <div class="w-50 alert alert-danger">
+                @if (orders.get('city')?.getError('required')) {
+                    <p class="m-0">city is required</p>
+                }
+                @else if (orders.get('city')?.getError('pattern')) {
+                    <p class="m-0">city not found</p>
+                }
+            </div>
+        }
+    </div>
+    <button [disabled]=" isLoading" class="btn-main my-2" type="submit">
+        check out
+        @if (isLoading) {
+            <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+    </button>
+    <button (click)="cashPayment()" type="button" class="btn-main my-2 mx-2">Cash</button>
+</form>
+</section>

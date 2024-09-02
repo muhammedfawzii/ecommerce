@@ -1,0 +1,6 @@
+#heart{
+    transform: translateX(120%);
+    transition: all 0.8s;
+} #parent:hover #heart{
+    transform: translateX(0);
+}
