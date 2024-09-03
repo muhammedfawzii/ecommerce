@@ -112,6 +112,9 @@ a:hover {
 }
 @media (max-width:768px) {
   .changeFs{
-    width: 100%;
+    width: 100% !important;
   }
+ div.alert-danger{
+  width: 100% !important; 
+ }
 }

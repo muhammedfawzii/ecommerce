@@ -11,7 +11,7 @@
        @if (loginForm.get('email')?.errors && (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)) {
         <div class="w-50 alert alert-danger">
             @if (loginForm.get('email')?.getError('required')) {
-                <p class="m-0 changeFs">email is required</p>
+                <p  class="m-0 changeFs">email is required</p>
             }
             @else if (loginForm.get('email')?.getError('email')) {
                 <p class="m-0 changeFs">invalid email</p>
@@ -56,7 +56,7 @@
    </div>
 
     @if (msgError) {
-        <p class="w-50 alert alert-danger changeFs">{{msgError}}</p>
+        <p [class.d-none]="checkErr" class="w-50 alert alert-danger changeFs">{{msgError}}</p>
     }
     @if (msgSuccess) {
         <p class="text-main">Success <i class="fa-solid fa-thumbs-up text-main"></i></p>

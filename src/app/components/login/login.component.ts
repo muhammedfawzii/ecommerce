@@ -22,6 +22,7 @@ msgError:string = ""
 msgSuccess:boolean = false
 inputType:boolean = false
 logUnsub!:Subscription
+checkErr:boolean = false
 
 loginForm:FormGroup = this._FormBuilder.group({
   email:[null, [Validators.required, Validators.email]],
@@ -35,6 +36,7 @@ loginSubmit():void{
       next: (res)=>{
         console.log(res);
         if(res.message === 'success'){
+          this.checkErr = true
           this.msgSuccess = true
           setTimeout(() => {
             localStorage.setItem('userToken', res.token)
