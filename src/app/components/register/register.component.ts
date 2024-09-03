@@ -23,6 +23,7 @@ msgSuccess:boolean = false
 inputType:boolean = false
 inputType1:boolean = false
 registerUnsub!:Subscription
+checkErr:boolean = false
 
 registerForm:FormGroup = this._FormBuilder.group({
   name:[null , [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -42,6 +43,7 @@ registerSubmit():void{
       next:(res)=>{
         console.log(res);
         if(res.message === 'success'){
+          this.checkErr = true
           this.msgSuccess = true
           setTimeout(() => {
             this._Router.navigate(['/login'])

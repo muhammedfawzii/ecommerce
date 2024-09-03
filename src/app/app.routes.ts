@@ -1,16 +1,13 @@
 import { Routes } from '@angular/router';
-import { AllordersComponent } from './components/allorders/allorders.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { DetailsComponent } from './components/details/details.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductComponent } from './components/product/product.component';
 import { RegisterComponent } from './components/register/register.component';
-import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { authGuard } from './core/guards/auth.guard';
 import { loggedGuard } from './core/guards/logged.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
@@ -23,11 +20,11 @@ export const routes: Routes = [
     {path:'product', component:ProductComponent, title:'product'},
     {path: 'categories', component: CategoriesComponent, title:'categories'},
     {path:'cart', component:CartComponent, title:'cart'},
-    {path:'wishlist', component:WishlistComponent, title:'wishlist'},
+    {path:'wishlist', loadComponent:()=>import('./components/wishlist/wishlist.component').then((c)=>c.WishlistComponent), title:'wishlist'},
     {path: 'brands', loadComponent:()=>import('./components/brands/brands.component').then((c)=>c.BrandsComponent), title:'brands'},
     {path: 'details/:id', component:DetailsComponent},
-    {path: 'allorders', component:AllordersComponent},
-    {path: 'orders/:id', component:OrdersComponent},
+    {path: 'allorders', loadComponent:()=> import('./components/allorders/allorders.component').then((c)=>c.AllordersComponent), title:'allorders'},
+    {path: 'orders/:id',component:OrdersComponent , title:'orders'},
     ]},
 
     {path:"", component:AuthLayoutComponent, canActivate:[loggedGuard], children:[
@@ -36,6 +33,6 @@ export const routes: Routes = [
         {path:'login', component:LoginComponent, title:'login'},
         {path:'forgot', component:ForgotPasswordComponent, title:'forgotPassword'}
     ]},
-    {path:"**", component:NotFoundComponent}
+    {path:"**", loadComponent:()=>import('./components/not-found/not-found.component').then((c)=>c.NotFoundComponent)}
     
 ];

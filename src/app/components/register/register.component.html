@@ -104,7 +104,7 @@
         }
     </button>
 @if (msgError) {
-   <p class="w-50 alert alert-danger changeFs">{{msgError}}</p>
+   <p [class.d-none]="checkErr" class="w-50 alert alert-danger changeFs">{{msgError}}</p>
 }
 
 @if (msgSuccess) {

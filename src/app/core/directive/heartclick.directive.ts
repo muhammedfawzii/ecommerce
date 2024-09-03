@@ -11,5 +11,4 @@ export class HeartclickDirective {
   @HostListener('click') click(){
     this.el.nativeElement.style.color = 'red'
   }
-
 }
