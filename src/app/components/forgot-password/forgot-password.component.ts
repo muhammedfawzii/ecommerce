@@ -61,6 +61,7 @@ export class ForgotPasswordComponent {
 
   codeSubmit():void{
     if(this.verifyCode.valid){
+      this.isLoading = true
       this._AuthService.setCodeVerify(this.verifyCode.value).subscribe({
         next:(res)=>{
           console.log(res);
@@ -70,10 +71,11 @@ export class ForgotPasswordComponent {
               this.step = 3
             }, 4000);
           }
+          this.isLoading = false
         },
         error:(err)=>{
           console.log(err);
-          
+          this.isLoading = false
         }
       })
     }else{
@@ -82,23 +84,28 @@ export class ForgotPasswordComponent {
   }
 
   resetPasswordSubmit():void{
-    this._AuthService.setresetPass(this.resetPassword.value).subscribe({
-      next:(res)=>{
-        console.log(res);
-        this.welcomeHome = true
-        localStorage.setItem('userToken', res.token)
-        this._AuthService.saveUserToken()
-        setTimeout(() => {
-          this._Router.navigate(['/home'])
-        }, 4000);
-      },
-      error:(err)=>{
-        console.log(err);
-        
-      }
-    })
+    if(this.resetPassword.valid){
+      this.isLoading = true
+      this._AuthService.setresetPass(this.resetPassword.value).subscribe({
+        next:(res)=>{
+          console.log(res);
+          this.welcomeHome = true
+          localStorage.setItem('userToken', res.token)
+          this._AuthService.saveUserToken()
+          setTimeout(() => {
+            this._Router.navigate(['/home'])
+          }, 4000);
+          this.isLoading = false
+        },
+        error:(err)=>{
+          console.log(err);
+          this.isLoading = false
+        }
+      })
+    }
+   
   }
   passwordVisibility():void{
-    this.inputType = true
+    this.inputType = !this.inputType
   }
 }
