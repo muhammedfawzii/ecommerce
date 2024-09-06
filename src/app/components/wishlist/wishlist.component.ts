@@ -17,14 +17,18 @@ private readonly _WishlistService = inject(WishlistService)
 
 userWishlist:WritableSignal<IWishlist[]>= signal([])
 wishListUnsub!:Subscription
+ids:string[] = []  
 
 ngOnInit(): void {
 
 
-this.wishListUnsub =   this._WishlistService.getWishList().subscribe({
+this.wishListUnsub = this._WishlistService.getWishList().subscribe({
     next:(res)=>{
       console.log(res.data);
+      
       this.userWishlist.set(res.data)
+     this.ids = res.data.map((item:any)=> item.id)
+      console.log(this.ids)
     },
     error:(err)=>{
       console.log(err);
@@ -32,6 +36,7 @@ this.wishListUnsub =   this._WishlistService.getWishList().subscribe({
     }
   })
 }
+
 removeProduct(id:string):void{
 
 

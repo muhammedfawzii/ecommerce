@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
+
+  wishListid:WritableSignal<string[]> = signal([])
 
   constructor(private _HttpClient:HttpClient) { }
 

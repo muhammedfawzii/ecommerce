@@ -86,7 +86,13 @@
                         <span>{{detailsProducts.ratingsAverage}}</span>
                     </div>
                 </div>
-                <button (click)="addToCart(detailsProducts._id)" class="btn-main w-100">Add To Cart</button>
+                <button  (click)="addToCart(detailsProducts._id)" class="btn-main w-100">Add To Cart</button>
+                @if (!wishlistIds().includes(detailsProducts.id)) {
+                    <i  (click)="addToWishList(detailsProducts.id)" class="fa-regular fa-heart cr fa-xl"></i>
+                }
+                @if (wishlistIds().includes(detailsProducts.id)) {
+                    <i (click)="deleteWishlist(detailsProducts.id)" class="fa-solid fa-heart text-danger cr fa-xl"></i>
+                }
             </div>
         </div>
     </section>

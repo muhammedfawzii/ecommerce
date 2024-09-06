@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { ProductsService } from '../../core/services/products.service';
 import { Product } from '../../core/interfaces/icart';
 import { RouterLink } from '@angular/router';
@@ -25,6 +25,9 @@ private readonly _WishlistService = inject(WishlistService)
 private readonly _CartService = inject(CartService)
 private readonly _ToastrService = inject(ToastrService)
 productList:WritableSignal<Product[]> = signal([])
+wishlistIds: Signal<string[]> = computed(() =>
+  this._WishlistService.wishListid()
+);
 data:string = ""
 productUnsub!:Subscription
 
@@ -39,11 +42,22 @@ ngOnInit(): void {
       
     }
   })
+  this._WishlistService.getWishList().subscribe({
+    next: (res) => {
+      console.log(res);
+
+      this._WishlistService.wishListid.set(
+        res.data.map((item: any) => item._id)
+      );
+      console.log(this.wishlistIds());
+    },
+  });
 }
 addToWishList(id:string):void{
 this._WishlistService.addProductsToWishlist(id).subscribe({
   next:(res)=>{
-    console.log(res);  
+    console.log(res); 
+    this._WishlistService.wishListid.set(res.data);
   },
   error:(err)=>{
     console.log(err);
@@ -58,6 +72,14 @@ this._CartService.addProductsToCart(id).subscribe({
     this._CartService.count.set(res.numOfCartItems)
   }
 })
+}
+
+deleteWishlist(id: string): void {
+  this._WishlistService.rempveProductFromWishList(id).subscribe({
+    next: (res) => {
+      this._WishlistService.wishListid.set(res.data);
+    },
+  });
 }
 ngOnDestroy(): void {
   this.productUnsub?.unsubscribe()

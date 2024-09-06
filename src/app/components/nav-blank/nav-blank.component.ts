@@ -35,15 +35,15 @@ change(lang:string){
   
 }
 @ViewChild('scroll') el!:ElementRef
+previousScrollPosition = 0;
 @HostListener('window:scroll') onScroll(){
   if(scrollY > 50){
   this.el.nativeElement.style.paddingBlock = '20px'
-  this.el.nativeElement.style.backgroundColor = 'black'
-   
-  }else{
-  this.el.nativeElement.style.paddingBlock = '14px'
-  this.el.nativeElement.style.backgroundColor = 'grey'
-  }
+}else if(scrollY === 0){
+  this.el.nativeElement.style.paddingBlock = '10px'
+}else{
+  this.el.nativeElement.style.height = '70%'
 }
 
+}
 }

@@ -54,7 +54,13 @@
         <div id="parent" class="col-sm-6 col-md-2">
             <div class="product py-2">
                 <div id="heart" class="my-2 p-2">
-                    <i appHeartclick  (click)="addToWishList(product.id)" class="fa-solid fa-heart cr fa-xl"></i>
+                    @if (!wishlistIds().includes(product.id)) {
+                        <i  (click)="addToWishList(product.id)" class="fa-regular fa-heart cr fa-xl"></i>
+                    }
+                    @if (wishlistIds().includes(product.id)) {
+                        <i (click)="deleteWishlist(product.id)" class="fa-solid fa-heart text-danger cr fa-xl"></i>
+                    }
+
                 </div>
                 <div [routerLink]="['/details', product._id]" class="cr">
                     <img [src]="product.imageCover" class="w-100" [alt]="product.title">
