@@ -2,7 +2,7 @@
     <h1 class="h2 text-main">Popular Brands:</h1>
     <div class="row g-3">
         @for (item of brands(); track item._id) {
-            <div class="col-md-4">
+            <div id="parent" class="col-md-4">
                 <div class="cr card" [routerLink]="['/details' , item._id]">
                     <img [src]="item.image" class="card-mg" [alt]="item.name">
                     <div class="card-body">

@@ -48,7 +48,7 @@
 
 <section>
     <h2>Popular Products:</h2>
-    <input [(ngModel)]="data" type="search" class="w-50 form-control my-3 mx-auto" placeholder="search by name...">
+    <input id="search" [(ngModel)]="data" type="search" class="w-50 form-control my-3 mx-auto" placeholder="search by name...">
     <div class="row g-3">
        @for (product of productList().slice(0 , 12) |search:data(); track product.id) {
         <div id="parent" class="col-sm-6 col-md-2">
