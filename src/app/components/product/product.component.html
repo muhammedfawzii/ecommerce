@@ -3,11 +3,11 @@
     <input [(ngModel)]="data" type="search" class="w-50 form-control my-3 mx-auto" placeholder="search by name...">
     <div class="row g-3">
        @for (product of productList() |search:data; track product.id) {
-        <div class=" col-md-2">
-            <div id="parent" class="product py-2">
+        <div id="parent" class="col-md-2">
+            <div class="product py-2">
                 <div id="heart" class="my-2 p-2">
                     @if (!wishlistIds().includes(product.id)) {
-                        <i (click)="addToWishList(product.id)" class="fa-regular fa-heart cr fa-xl"></i>
+                        <i (click)="addToWishList(product.id)" class="fa-solid fa-heart cr fa-xl"></i>
                     }
                     @if (wishlistIds().includes(product.id)) {
                         <i (click)="deleteWishlist(product.id)" class="fa-solid fa-heart text-danger cr fa-xl"></i>

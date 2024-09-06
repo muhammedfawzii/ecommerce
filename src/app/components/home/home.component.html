@@ -55,7 +55,7 @@
             <div class="product py-2">
                 <div id="heart" class="my-2 p-2">
                     @if (!wishlistIds().includes(product.id)) {
-                        <i  (click)="addToWishList(product.id)" class="fa-regular fa-heart cr fa-xl"></i>
+                        <i  (click)="addToWishList(product.id)" class="fa-solid fa-heart cr fa-xl"></i>
                     }
                     @if (wishlistIds().includes(product.id)) {
                         <i (click)="deleteWishlist(product.id)" class="fa-solid fa-heart text-danger cr fa-xl"></i>
