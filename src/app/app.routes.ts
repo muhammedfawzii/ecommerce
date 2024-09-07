@@ -12,6 +12,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { loggedGuard } from './core/guards/logged.guard';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 import { BlankLayoutComponent } from './layout/blank-layout/blank-layout.component';
+import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 
 export const routes: Routes = [
     {path: "" , component:BlankLayoutComponent, canActivate:[authGuard], children:[
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path:'home', component: HomeComponent , title:'home'},
     {path:'product', component:ProductComponent, title:'product'},
     {path: 'categories', component: CategoriesComponent, title:'categories'},
+    {path: 'subCategory/:id', component: SubCategoryComponent, title:'subCategory'},
     {path:'cart', component:CartComponent, title:'cart'},
     {path:'wishlist', loadComponent:()=>import('./components/wishlist/wishlist.component').then((c)=>c.WishlistComponent), title:'wishlist'},
     {path: 'brands', loadComponent:()=>import('./components/brands/brands.component').then((c)=>c.BrandsComponent), title:'brands'},

@@ -25,6 +25,7 @@ private readonly _WishlistService = inject(WishlistService)
 private readonly _CartService = inject(CartService)
 private readonly _ToastrService = inject(ToastrService)
 productList:WritableSignal<Product[]> = signal([])
+productList1:WritableSignal<Product[]> = signal([])
 wishlistIds: Signal<string[]> = computed(() =>
   this._WishlistService.wishListid()
 );
@@ -42,6 +43,17 @@ ngOnInit(): void {
       
     }
   })
+ this.productUnsub =  this._ProductsService.getAllProductsExtra().subscribe({
+    next:(res)=>{
+      console.log(res.data);
+      this.productList1.set(res.data)
+    },
+    error:(err)=>{
+      console.log(err);
+      
+    }
+  })
+  
   this._WishlistService.getWishList().subscribe({
     next: (res) => {
       console.log(res);

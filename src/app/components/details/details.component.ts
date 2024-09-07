@@ -26,7 +26,6 @@ export class DetailsComponent implements OnInit {
   private readonly _WishlistService = inject(WishlistService);
   detailsProducts: Product | null = null;
   detailsCateg: ICategories | null = null;
-  detailsBrands: IBrands | null = null;
   wishlistIds: Signal<string[]> = computed(() =>
     this._WishlistService.wishListid()
   );
@@ -62,15 +61,7 @@ export class DetailsComponent implements OnInit {
         console.log(p.get('id'));
         let idProduct = p.get('id');
 
-        this._BrandsService.getSpecificBrands(idProduct).subscribe({
-          next: (res) => {
-            console.log(res.data);
-            this.detailsBrands = res.data;
-          },
-          error: (err) => {
-            console.log(err);
-          },
-        });
+        
         this._WishlistService.getWishList().subscribe({
           next: (res) => {
             this._WishlistService.wishListid.set(

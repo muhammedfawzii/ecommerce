@@ -1,0 +1,15 @@
+<section class="bg-main-light">
+<div class="row">
+    @if(categoryList.length == 0){
+    <h2 class="text-center">{{text}}</h2>
+    }
+    @for (item of categoryList; track item._id) {
+        <div class="col-sm-6 col-md-3">
+            <div class="text-center border card m-3">
+                <h5>{{item.name}}</h5>
+                <h5 class="text-muted">{{item.slug}}</h5>
+            </div>
+        </div>
+    }
+</div>
+</section>

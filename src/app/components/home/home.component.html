@@ -32,7 +32,7 @@
             
                 
                     <ng-template carouselSlide>
-                        <div [routerLink]="['/details', categ._id]" class="cr">
+                        <div [routerLink]="['/subCategory', categ._id]" class="cr">
                         <img [src]="categ.image" height="250px" class="w-100" [alt]="categ.name">
                         <h3 class="h6 text-main my-2">{{ categ.name | translate}}</h3>
                         </div>

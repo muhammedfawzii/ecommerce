@@ -3,7 +3,7 @@
     <div class="row g-3">
         @for (item of categoryList(); track $index) {
             <div id="parent" class="col-md-3">
-            <div [routerLink]="['/details' , item._id]" class="cr">
+            <div [routerLink]="['/subCategory' , item._id]" class="cr">
                 <img [src]="item.image" class="w-100" height="350px" [alt]="item.name">
                 <div>
                     <h4 class="h5 text-main">{{item.name}}</h4>                   

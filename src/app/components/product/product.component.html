@@ -37,5 +37,40 @@
             </div>
         </div>
        }
+       @for (product of productList1() |search:data; track product.id) {
+        <div id="parent" class="col-md-2">
+            <div class="product py-2">
+                <div id="heart" class="my-2 p-2">
+                    @if (!wishlistIds().includes(product.id)) {
+                        <i (click)="addToWishList(product.id)" class="fa-solid fa-heart cr fa-xl"></i>
+                    }
+                    @if (wishlistIds().includes(product.id)) {
+                        <i (click)="deleteWishlist(product.id)" class="fa-solid fa-heart text-danger cr fa-xl"></i>
+                    }
+                </div>
+                <div [routerLink]="['/details', product._id]" class="cr">
+                    <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                <h3 class="small text-main">{{product.category.name}}</h3>
+                <h4 class="h6">{{product.title|textterm:2}}</h4>
+                <div class="d-block">
+                    <span>{{product.price|currency:'GBP'}}</span>
+                    <div>
+                        @for (num of [1, 2, 3, 4, 5].slice(0, product.ratingsAverage); track $index) {
+                            <span><i class="fas fa-star rating-color"></i></span>
+                        }
+                        @if (product.ratingsAverage % 1 !== 0) {
+                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
+                        }
+                        <span>{{product.ratingsAverage}}</span>
+                    </div>
+                    
+                </div>
+                
+                </div>
+                
+                <button class="btn-main w-100" (click)="addToCart(product.id)">Add To Cart</button>
+            </div>
+        </div>
+       }
     </div>
 </section>

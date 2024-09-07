@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class BrandsComponent implements OnInit , OnDestroy {
 private readonly _BrandsService = inject(BrandsService)
+detailsBrands:IBrands | null = null
 brands:WritableSignal<IBrands[]> = signal([])
 brandsUnsub!:Subscription
 
@@ -25,6 +26,14 @@ ngOnInit(): void {
     },
     error:(err)=>{
       console.log(err); 
+    }
+  })
+}
+getSpecificBrand(id:string):void{
+  this._BrandsService.getSpecificBrands(id).subscribe({
+    next:(res)=>{
+      console.log(res.data);
+      this.detailsBrands = res.data
     }
   })
 }

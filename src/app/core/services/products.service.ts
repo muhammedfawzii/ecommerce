@@ -11,7 +11,10 @@ export class ProductsService {
   constructor() { }
 
   getAllProducts():Observable<any>{
-    return this._HttpClient.get(`${environment.baseUrl}/api/v1/products/`)
+    return this._HttpClient.get(`${environment.baseUrl}/api/v1/products`)
+  }
+  getAllProductsExtra():Observable<any>{
+    return this._HttpClient.get(`${environment.baseUrl}/api/v1/products?page=2`)
   }
   getSpecificProducts(id:string | null):Observable<any>{
     return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)

@@ -1,29 +1,5 @@
 
-@if (detailsBrands) {
-    <section class="my-2">
-        <div class="row">
-            <div class="col-md-3">
-                <div>
-                    <img [src]="detailsBrands.image" class="w-100" [alt]="detailsBrands.name">
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div>
-                    <h3 class="h5 text-main">{{detailsBrands.name}}</h3>
-                    <p>{{detailsBrands.slug}}</p>
-                    <div>
-                        @for (num of [1, 2, 3, 4, 5]; track $index) {
-                            <span><i class="fas fa-star rating-color"></i></span>
-                        }
-                            <i  class="fa-solid fa-star-half-stroke rating-color"></i>
-                        <span>4.8</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-    </section>
-}
+
 
 @if (detailsCateg) {
     <section class="my-2">
