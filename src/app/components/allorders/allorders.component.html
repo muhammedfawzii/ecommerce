@@ -1,8 +1,9 @@
-<section class="bg-main-light shadow p-2 my-2 rounded-3 mx-auto w-75">
+<section class="shadow p-2 my-2 rounded-3 mx-auto w-75">
   <h1 class="h2 text-center text-main">your all purchases</h1>
 
   @for (item of userCart(); track $index) {
     <h2>Order {{$index + 1}}</h2>
+    <div class="bg-main-light px-3">
   @for (item of item.cartItems; track $index) {
   <div class="row pb-2 border-bottom">
     <div class="col-md-1">
@@ -16,5 +17,8 @@
       <p>product count: {{ item.count }}</p>
     </div>
   </div>
-  } }
+
+  } 
+</div>
+}
 </section>
